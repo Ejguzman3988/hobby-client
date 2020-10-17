@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Home from './containers/Home'
+import NavBar from './components/NavBar'
 import TimerList from './containers/timers/TimerList'
 import TimerForm from './containers/timers/TimerForm'
 import TimerShow from './containers/timers/TimerShow'
@@ -12,6 +13,7 @@ export class App extends Component {
       <Router>
         <h1>Hobby Tracker</h1>
         <div className="App">
+          <NavBar />
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/timers' component={TimerList} />
