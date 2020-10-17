@@ -1,6 +1,6 @@
 const initialState = {
     loading: true,
-    timers
+    timers: []
 }
 
 export default (state=initialState, action) => {
