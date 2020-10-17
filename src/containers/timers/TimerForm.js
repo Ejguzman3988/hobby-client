@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 
-export class TimerList extends Component {
+export class TimerForm extends Component {
     render() {
         return (
             <div>
-                <h3>Heres a list of timers</h3> 
+                <h3>Add a timer</h3>
             </div>
         )
     }
 }
 
-export default TimerList
+export default TimerForm
 
