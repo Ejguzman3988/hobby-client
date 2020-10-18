@@ -5,9 +5,17 @@ import { connect } from "react-redux";
 
 import Home from "./containers/Home";
 import NavBar from "./components/NavBar";
+
+// Timers
 import TimerList from "./containers/timers/TimerList";
 import TimerForm from "./containers/timers/TimerForm";
 import TimerShow from "./containers/timers/TimerShow";
+
+// Session
+import SignIn from "./containers/sessions/SignIn";
+import Register from "./containers/sessions/Register";
+
+// Actions
 import { fetchTimers } from "./actions/Timers";
 
 export class App extends Component {
@@ -16,8 +24,17 @@ export class App extends Component {
   }
 
   render() {
-    if (true) {
-      return <h1>Log In Screen</h1>;
+    if (!this.props.login) {
+      return (
+        <Router>
+          <div className="App">
+            <switch>
+              <Route exact path="/Register" exact component={Register} />
+              <Route component={SignIn} />
+            </switch>
+          </div>
+        </Router>
+      );
     } else {
       return (
         <Router>
@@ -38,4 +55,11 @@ export class App extends Component {
   }
 }
 
-export default connect(null, { fetchTimers })(App);
+const mapStateToProps = (state) => {
+  return {
+    login: state.sessionsReducer.login,
+    username: state.sessionsReducer.username,
+  };
+};
+
+export default connect(mapStateToProps, { fetchTimers })(App);
