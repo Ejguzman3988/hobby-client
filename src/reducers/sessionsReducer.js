@@ -10,6 +10,8 @@ export default (state = initialState, action) => {
       return { ...state, login: false };
     case "SUCCESS":
       return { ...state, login: true, email: action.email };
+    case "ERRRORS":
+      return { ...state, login: false, errors: action.errors };
     default:
       return state;
   }

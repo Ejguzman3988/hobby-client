@@ -20,10 +20,6 @@ import Errors from "./containers/sessions/Errors";
 import { fetchTimers } from "./actions/Timers";
 
 export class App extends Component {
-  componentDidMount() {
-    this.props.fetchTimers();
-  }
-
   render() {
     if (!this.props.login) {
       return (
@@ -38,6 +34,7 @@ export class App extends Component {
         </Router>
       );
     } else {
+      this.props.fetchTimers();
       return (
         <Router>
           <h1>Hobby Tracker</h1>
