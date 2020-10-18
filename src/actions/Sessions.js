@@ -12,8 +12,8 @@ export const fetchLogging = ({ email, password }) => {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        email: email,
-        password: password,
+        email,
+        password,
       }),
     })
       .then((resp) => {
@@ -33,12 +33,34 @@ export const fetchLogging = ({ email, password }) => {
   };
 };
 
-export const fetchRegister = () => {
+export const fetchRegister = ({ email, password }) => {
   // POST /users
   return (dispatch) => {
     dispatch(LOGGING);
-    fetch(BASE_URL + "/users")
-      .then((resp) => resp.json())
-      .then((email) => dispatch({ type: "SUCCESS", email }));
+    fetch(BASE_URL + "/users", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((resp) => {
+        if (!resp.ok) {
+          throw resp;
+        }
+        return resp.json();
+      })
+      .then((data) => {
+        dispatch({ type: "SUCCESS", email: data.email });
+      })
+      .catch((errors) => {
+        errors.text().then((error) => {
+          dispatch({ type: "ERRRORS", errors: error });
+        });
+      });
   };
 };

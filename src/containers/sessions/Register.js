@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,6 +11,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { connect } from "react-redux";
+import { fetchRegister } from "../../actions/Sessions";
 
 function Copyright() {
   return (
@@ -45,8 +47,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+const SignUp = (props) => {
   const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleOnChange = (e) => {
+    if (e.target.name === "email") {
+      return setEmail(e.target.value);
+    } else if (e.target.name === "password") {
+      return setPassword(e.target.value);
+    }
+  };
+
+  const handleOnRegister = (e) => {
+    e.preventDefault();
+    props.fetchRegister({
+      email,
+      password,
+    });
+    setPassword("");
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -69,6 +90,7 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={handleOnChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -81,6 +103,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleOnChange}
               />
             </Grid>
             {/* <Grid item xs={12}>
@@ -102,6 +125,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleOnRegister}
           >
             Sign Up
           </Button>
@@ -119,4 +143,6 @@ export default function SignUp() {
       </Box>
     </Container>
   );
-}
+};
+
+export default connect(null, { fetchRegister })(SignUp);
