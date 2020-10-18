@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-export class TimerShow extends Component {
-    render() {
-        return (
-            <div>
-                <h3>Heres the specific Timer you requested</h3>
-            </div>
-        )
-    }
+const TimerShow = () => {
+    return (
+        <div>
+            <h3>Heres the specific Timer you requested</h3>
+        </div>
+    );
 }
 
-export default TimerShow
+export default TimerShow;

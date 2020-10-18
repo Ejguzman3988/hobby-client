@@ -1,13 +1,20 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import { connect } from 'react-redux'
+
 import Home from './containers/Home'
 import NavBar from './components/NavBar'
 import TimerList from './containers/timers/TimerList'
 import TimerForm from './containers/timers/TimerForm'
 import TimerShow from './containers/timers/TimerShow'
+import { fetchTimers } from './actions/Timers'
 
 export class App extends Component {
+  componentDidMount(){
+    this.props.fetchTimers();
+  }
+  
   render() {
     return (
       <Router>
@@ -28,5 +35,5 @@ export class App extends Component {
   }
 }
 
-export default App
+export default connect(null, { fetchTimers })(App)
 
