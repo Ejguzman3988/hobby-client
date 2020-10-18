@@ -1,6 +1,7 @@
 const initialState = {
+  errors: [],
   login: false,
-  username: "",
+  email: "",
 };
 
 export default (state = initialState, action) => {
@@ -8,7 +9,7 @@ export default (state = initialState, action) => {
     case "LOGGING":
       return { ...state, login: false };
     case "SUCCESS":
-      return { ...state, login: true, username: action.username };
+      return { ...state, login: true, email: action.email };
     default:
       return state;
   }

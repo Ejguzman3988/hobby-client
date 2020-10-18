@@ -65,10 +65,10 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="username"
-                label="User Name"
-                name="username"
-                autoComplete="username"
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
               />
             </Grid>
             <Grid item xs={12}>

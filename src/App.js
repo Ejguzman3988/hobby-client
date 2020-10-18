@@ -14,6 +14,7 @@ import TimerShow from "./containers/timers/TimerShow";
 // Session
 import SignIn from "./containers/sessions/SignIn";
 import Register from "./containers/sessions/Register";
+import Errors from "./containers/sessions/Errors";
 
 // Actions
 import { fetchTimers } from "./actions/Timers";
@@ -27,6 +28,7 @@ export class App extends Component {
     if (!this.props.login) {
       return (
         <Router>
+          <Errors errors={this.props.errors} />
           <div className="App">
             <switch>
               <Route exact path="/Register" exact component={Register} />
@@ -57,8 +59,9 @@ export class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    errors: state.sessionsReducer.errors,
     login: state.sessionsReducer.login,
-    username: state.sessionsReducer.username,
+    email: state.sessionsReducer.email,
   };
 };
 
