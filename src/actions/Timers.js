@@ -1,3 +1,6 @@
+import { createBrowserHistory } from "history";
+
+export const browserHistory = createBrowserHistory();
 const LOADING = { type: "LOADING" };
 const BASE_URL = "http://localhost:3001";
 
@@ -20,10 +23,8 @@ export const fetchNewTimer = ({ name, category, id }) => {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        timer: {
-          name,
-          category,
-        },
+        name,
+        category,
       }),
     })
       .then((resp) => {
@@ -32,12 +33,12 @@ export const fetchNewTimer = ({ name, category, id }) => {
         }
         return resp.json();
       })
-      .then((data) => {
-        dispatch({ type: "LOAD_TIMERS", payload: data });
+      .then((timer) => {
+        dispatch({ type: "CREATE_TIMER", timer });
       })
       .catch((errors) => {
         errors.text().then((error) => {
-          dispatch({ type: "TIMER_ERROR", errors: error });
+          dispatch({ type: "TIMER_ERRORS", errors: error });
         });
       });
   };

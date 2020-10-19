@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import { fetchNewTimer } from "../../actions/Timers";
 import Errors from "../sessions/Errors";
+import TimerList from "../../containers/timers/TimerList";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,11 +36,12 @@ const TimerForm = (props) => {
       id: props.id,
     });
   };
-
+  if (props.created) {
+    props.history.push("/timers");
+  }
   return (
     <div>
-      <Errors error={props.errors} />
-
+      <Errors errors={props.errors} />
       <form className={classes.root} noValidate autoComplete="off">
         <TextField
           name="name"
@@ -56,16 +58,17 @@ const TimerForm = (props) => {
           onChange={handleOnChange}
         />
         <br />
-        <input type="submit" value="Submit" onClick={handleOnClick} />
+        <button onClick={handleOnClick}>Create Timer</button>
       </form>
     </div>
   );
 };
-
 const mapStateToProps = (state) => {
   return {
     id: state.sessionsReducer.id,
-    errors: state.sessionsReducer.errors,
+    errors: state.timersReducer.errors,
+    created: state.timersReducer.created,
+    timers: state.timersReducer.timers,
   };
 };
 
