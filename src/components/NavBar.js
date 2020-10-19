@@ -47,6 +47,11 @@ export const Navbar = () => {
             Create Timer
           </NavLink>
         </Button>
+        <Button color="inherit">
+          <NavLink to="/logout" className={classes.root}>
+            Log Out
+          </NavLink>
+        </Button>
       </Toolbar>
     </AppBar>
   );

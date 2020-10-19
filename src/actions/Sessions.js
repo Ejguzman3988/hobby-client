@@ -1,6 +1,12 @@
 const LOGGING = { type: "LOGGING" };
 const BASE_URL = "http://localhost:3001";
 
+export const LoggingOut = () => {
+  return (dispatch) => {
+    dispatch({ type: "LOGGING_OUT" });
+  };
+};
+
 export const fetchLogging = ({ email, password }) => {
   // POST /users/sign_in
   return (dispatch) => {
@@ -23,7 +29,7 @@ export const fetchLogging = ({ email, password }) => {
         return resp.json();
       })
       .then((data) => {
-        dispatch({ type: "SUCCESS", email: data.email });
+        dispatch({ type: "SUCCESS", payload: data });
       })
       .catch((errors) => {
         errors.text().then((error) => {
@@ -55,7 +61,7 @@ export const fetchRegister = ({ email, password }) => {
         return resp.json();
       })
       .then((data) => {
-        dispatch({ type: "SUCCESS", email: data.email });
+        dispatch({ type: "SUCCESS", payload: data });
       })
       .catch((errors) => {
         errors.text().then((error) => {

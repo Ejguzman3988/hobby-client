@@ -15,6 +15,7 @@ import TimerShow from "./containers/timers/TimerShow";
 import SignIn from "./containers/sessions/SignIn";
 import Register from "./containers/sessions/Register";
 import Errors from "./containers/sessions/Errors";
+import LogOut from "./containers/sessions/LogOut";
 
 // Actions
 import { fetchTimers } from "./actions/Timers";
@@ -34,7 +35,7 @@ export class App extends Component {
         </Router>
       );
     } else {
-      this.props.fetchTimers();
+      this.props.fetchTimers(this.props.id);
       return (
         <Router>
           <h1>Hobby Tracker</h1>
@@ -45,6 +46,7 @@ export class App extends Component {
               <Route exact path="/timers" component={TimerList} />
               <Route exact path="/timers/new" component={TimerForm} />
               <Route exact path="/timers/:id" component={TimerShow} />
+              <Route exact path="/logout" component={LogOut} />
               <Route render={(props) => <div>There is no cow level</div>} />
             </Switch>
           </div>
@@ -59,6 +61,7 @@ const mapStateToProps = (state) => {
     errors: state.sessionsReducer.errors,
     login: state.sessionsReducer.login,
     email: state.sessionsReducer.email,
+    id: state.sessionsReducer.id,
   };
 };
 

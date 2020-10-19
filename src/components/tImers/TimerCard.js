@@ -15,7 +15,7 @@ const TimerCard = ({
           {name} - {date}
         </NavLink>
         <p>Start: {start_time.split("T")[1]}</p>
-        <p>End: {end_time.split("T")[1]}</p>
+        {end_time ? <p>End: {end_time.split("T")[1]}</p> : <p></p>}
         <p>Total: {total_time / 3600} HRS</p>
       </div>
     </li>
