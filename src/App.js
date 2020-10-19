@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar";
 
 // Timers
 import TimerList from "./containers/timers/TimerList";
+import TimerListWeekly from "./containers/timers/TimerListWeekly";
 import TimerForm from "./containers/timers/TimerForm";
 import TimerShow from "./containers/timers/TimerShow";
 
@@ -35,7 +36,7 @@ export class App extends Component {
         </Router>
       );
     } else {
-      this.props.fetchTimers(this.props.id);
+      this.props.fetchTimers({ id: this.props.id, option: "/daily" });
       return (
         <Router>
           <h1>Hobby Tracker</h1>
@@ -44,6 +45,10 @@ export class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/timers" component={TimerList} />
+              <Route exact path="/timers/weekly" component={TimerListWeekly} />
+
+              <Route exact path="/timers/monthly" component={TimerList} />
+
               <Route exact path="/timers/new" component={TimerForm} />
               <Route exact path="/timers/:id" component={TimerShow} />
               <Route exact path="/logout" component={LogOut} />

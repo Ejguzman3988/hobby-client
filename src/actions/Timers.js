@@ -4,10 +4,16 @@ export const browserHistory = createBrowserHistory();
 const LOADING = { type: "LOADING" };
 const BASE_URL = "http://localhost:3001";
 
-export const fetchTimers = (id) => {
+export const createdDone = () => {
+  return (dispatch) => {
+    dispatch({ type: "CREATED_DONE" });
+  };
+};
+
+export const fetchTimers = ({ id, option }) => {
   return (dispatch) => {
     dispatch(LOADING);
-    fetch(BASE_URL + "/users/" + id + "/timers")
+    fetch(BASE_URL + "/users/" + id + option)
       .then((resp) => resp.json())
       .then((timers) => dispatch({ type: "LOAD_TIMERS", timers }));
   };

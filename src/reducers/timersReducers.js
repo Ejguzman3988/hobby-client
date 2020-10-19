@@ -10,7 +10,14 @@ export default (state = initialState, action) => {
     case "LOADING":
       return { ...state, loading: true, created: false };
     case "LOAD_TIMERS":
-      return { ...state, loading: false, timers: action.timers };
+      return {
+        ...state,
+        loading: false,
+        timers: action.timers,
+        created: false,
+      };
+    case "CREATED_DONE":
+      return { ...state, loading: false, created: false };
     case "CREATE_TIMER":
       return {
         ...state,

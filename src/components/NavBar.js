@@ -25,6 +25,13 @@ export const useStyles = makeStyles({
     padding: "10px 30px",
   },
   // CREATE TIMER FORMATTING
+  clock: {
+    background: "#9966cc",
+    textDecoration: "none",
+    color: "white",
+    padding: "10px 30px",
+    borderRadius: 3,
+  },
 });
 
 export const Navbar = () => {

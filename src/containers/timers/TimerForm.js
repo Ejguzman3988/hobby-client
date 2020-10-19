@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
-import { fetchNewTimer } from "../../actions/Timers";
+import { fetchNewTimer, createdDone } from "../../actions/Timers";
 import Errors from "../sessions/Errors";
 import TimerList from "../../containers/timers/TimerList";
 
@@ -37,6 +37,7 @@ const TimerForm = (props) => {
     });
   };
   if (props.created) {
+    props.createdDone();
     props.history.push("/timers");
   }
   return (
@@ -72,4 +73,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchNewTimer })(TimerForm);
+export default connect(mapStateToProps, { fetchNewTimer, createdDone })(
+  TimerForm
+);
