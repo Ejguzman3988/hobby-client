@@ -1,8 +1,8 @@
 const initialState = {
   errors: [],
-  login: false,
+  login: true,
   email: "",
-  id: null,
+  id: 1,
 };
 
 export default (state = initialState, action) => {
