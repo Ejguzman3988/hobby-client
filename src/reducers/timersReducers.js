@@ -3,6 +3,7 @@ const initialState = {
   loading: true,
   timers: [],
   created: false,
+  categories: ["hello"],
 };
 
 export default (state = initialState, action) => {
@@ -27,6 +28,11 @@ export default (state = initialState, action) => {
       };
     case "TIMER_ERRORS":
       return { ...state, loading: false, errors: action.errors };
+    case "LOAD_CATEGORIES":
+      return {
+        ...state,
+        categories: state.categories.concat(action.categories),
+      };
     default:
       return state;
   }

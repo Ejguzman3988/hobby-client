@@ -6,6 +6,13 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 
 export const useStyles = makeStyles({
+  work: {
+    background: "red",
+    padding: "20px 30px",
+    margin: "0px 10px",
+    maxWidth: 275,
+    display: "inline-block",
+  },
   root: {
     background: "#006400",
     border: 0,
@@ -19,27 +26,37 @@ export const useStyles = makeStyles({
     background: "#20b2aa",
   },
   link: {
-    background: "#20b2aa",
+    background: "#006400",
     textDecoration: "none",
     color: "white",
     padding: "10px 30px",
   },
   // CREATE TIMER FORMATTING
   clock: {
-    background: "#9966cc",
+    background: "black",
     textDecoration: "none",
-    color: "white",
+    color: "#32cd32",
     padding: "10px 30px",
     borderRadius: 3,
-    zIndex: "modal",
     border: "0",
+    fontFamily: "sans-serif",
+    fontSize: 30,
+    font: "#32cd32",
   },
   card: {
-    background: "#b9bce2",
+    background: "#00008b",
     padding: "20px 30px",
     margin: "0px 10px",
     maxWidth: 275,
     display: "inline-block",
+  },
+  word: {
+    display: "inline-block",
+    padding: "10px 20px",
+    background: "black",
+    color: "#32cd32",
+    fontFamily: '"Helvetica Neue"',
+    fontSize: 18,
   },
 });
 

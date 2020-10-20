@@ -4,6 +4,9 @@ import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import { fetchNewTimer, createdDone } from "../../actions/Timers";
 import Errors from "../sessions/Errors";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import ListItemText from "@material-ui/core/ListItemText";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,6 +21,20 @@ const TimerForm = (props) => {
   const classes = useStyles();
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    setAnchorEl(event.currentTarget);
+  };
+  const handleSelect = (event) => {
+    debugger;
+    let button = document.getElementById("category");
+    button.value = event.target.firstChild.data;
+    button.innerHTML = event.target.firstChild.data;
+    setAnchorEl(null);
+  };
 
   const handleOnChange = (e) => {
     if (e.target.name === "name") {
@@ -39,6 +56,17 @@ const TimerForm = (props) => {
     props.createdDone();
     props.history.push("/timers");
   }
+
+  const renderItems = props.categories.map((obj) => (
+    <MenuItem>
+      <ListItemText
+        key={obj.id}
+        primary={obj.category}
+        onClick={handleSelect}
+      />
+    </MenuItem>
+  ));
+
   return (
     <div>
       <Errors errors={props.errors} />
@@ -50,16 +78,24 @@ const TimerForm = (props) => {
           value={name}
           onChange={handleOnChange}
         />
-        <TextField
+        <button
           name="category"
-          id="standard-basic"
+          id="category"
           label="Category"
-          value={category}
-          onChange={handleOnChange}
-        />
+          value="Pick a Category"
+          // onChange={handleOnChange}
+          aria-controls="menu"
+          aria-haspopup="true"
+          onClick={handleClick}
+        >
+          Pick a Category
+        </button>
         <br />
         <button onClick={handleOnClick}>Create Timer</button>
       </form>
+      <Menu id="menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)}>
+        {renderItems}
+      </Menu>
     </div>
   );
 };
@@ -69,6 +105,7 @@ const mapStateToProps = (state) => {
     errors: state.timersReducer.errors,
     created: state.timersReducer.created,
     timers: state.timersReducer.timers,
+    categories: state.timersReducer.categories,
   };
 };
 

@@ -18,6 +18,10 @@ import SignIn from "./containers/sessions/SignIn";
 import Register from "./containers/sessions/Register";
 import Errors from "./containers/sessions/Errors";
 import LogOut from "./containers/sessions/LogOut";
+import FreeTime from "./containers/FreeTime";
+
+// actions
+import { categories } from "./actions/Timers";
 
 export class App extends Component {
   render() {
@@ -34,11 +38,13 @@ export class App extends Component {
         </Router>
       );
     } else {
+      this.props.categories({ id: this.props.id });
       return (
         <Router>
           <h1>Hobby Tracker</h1>
           <div className="App">
             <NavBar />
+            <FreeTime free_time={this.props.free_time} />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/timers" component={TimerList} />
@@ -68,7 +74,8 @@ const mapStateToProps = (state) => {
     login: state.sessionsReducer.login,
     email: state.sessionsReducer.email,
     id: state.sessionsReducer.id,
+    free_time: state.sessionsReducer.free_time,
   };
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { categories })(App);

@@ -12,10 +12,7 @@ export default function Clock(props) {
     }
     // time = 5400
     const totMin = time / 60; // => 60 mins
-    const HR = Math.floor(totMin / 60).toLocaleString("en-US", {
-      minimumIntegerDigits: 2,
-      useGrouping: false,
-    });
+    const HR = Math.floor(totMin / 60);
     const MIN = ((time / 60) % 60).toLocaleString("en-US", {
       minimumIntegerDigits: 2,
       useGrouping: false,

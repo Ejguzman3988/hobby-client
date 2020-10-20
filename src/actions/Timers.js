@@ -4,6 +4,19 @@ export const browserHistory = createBrowserHistory();
 const LOADING = { type: "LOADING" };
 const BASE_URL = "http://localhost:3001";
 
+export const categories = ({ id }) => {
+  return (dispatch) => {
+    fetch(BASE_URL + "/users/" + id + "/categories")
+      .then((resp) => resp.json())
+      .then((data) =>
+        dispatch({
+          type: "LOAD_CATEGORIES",
+          categories: data,
+        })
+      );
+  };
+};
+
 export const createdDone = () => {
   return (dispatch) => {
     dispatch({ type: "CREATED_DONE" });

@@ -1,8 +1,11 @@
 const initialState = {
+  // TODO: CHANGE ID,LOGIN,&FREETIME TO DEFAULT
+
   errors: [],
   login: true,
   email: "",
   id: 1,
+  free_time: "2",
 };
 
 export default (state = initialState, action) => {
@@ -17,11 +20,13 @@ export default (state = initialState, action) => {
         id: null,
       };
     case "SUCCESS":
+      debugger;
       return {
         ...state,
         login: true,
         email: action.payload.email,
         id: action.payload.id,
+        free_time: action.payload.free_time,
       };
     case "ERRRORS":
       return { ...state, login: false, errors: action.errors };
