@@ -6,6 +6,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 
 export const useStyles = makeStyles({
+  media: {
+    height: 140,
+  },
   work: {
     background: "red",
     padding: "20px 30px",
@@ -44,10 +47,8 @@ export const useStyles = makeStyles({
     font: "#32cd32",
   },
   card: {
-    background: "#00008b",
-    padding: "20px 30px",
-    margin: "0px 10px",
-    maxWidth: 275,
+    maxWidth: 345,
+    minWidth: 345,
     display: "inline-block",
   },
   word: {

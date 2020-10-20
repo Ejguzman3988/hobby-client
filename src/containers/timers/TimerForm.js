@@ -29,18 +29,16 @@ const TimerForm = (props) => {
     setAnchorEl(event.currentTarget);
   };
   const handleSelect = (event) => {
-    debugger;
     let button = document.getElementById("category");
     button.value = event.target.firstChild.data;
     button.innerHTML = event.target.firstChild.data;
     setAnchorEl(null);
+    setCategory(button.value);
   };
 
   const handleOnChange = (e) => {
     if (e.target.name === "name") {
       return setName(e.target.value);
-    } else if (e.target.name === "category") {
-      return setCategory(e.target.value);
     }
   };
 
@@ -87,6 +85,7 @@ const TimerForm = (props) => {
           aria-controls="menu"
           aria-haspopup="true"
           onClick={handleClick}
+          onChange={handleOnChange}
         >
           Pick a Category
         </button>

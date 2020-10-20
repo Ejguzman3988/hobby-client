@@ -34,6 +34,7 @@ class SignIn extends Component {
     this.setState({
       password: "",
     });
+    this.props.history.push("/");
   };
 
   useStyles = makeStyles((theme) => ({
