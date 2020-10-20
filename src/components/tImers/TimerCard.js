@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useStyles } from "../NavBar";
 import Clock from "./Clock";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 // import { makeStyles } from "@material-ui/core/styles";
 
 const TimerCard = ({
@@ -10,15 +12,15 @@ const TimerCard = ({
   const classes = useStyles();
 
   return (
-    <li>
-      <div className={classes.link}>
+    <Card className={classes.card}>
+      <CardContent>
         <NavLink className={classes.link} to={`/timers/${id}`}>
           {name} - {date}
         </NavLink>
         <p>Category: {category}</p>
         <Clock total_time={total_time} />
-      </div>
-    </li>
+      </CardContent>
+    </Card>
   );
 };
 

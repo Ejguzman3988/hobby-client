@@ -35,6 +35,13 @@ export const useStyles = makeStyles({
     border: "0",
     borderRadius: "30%",
   },
+  card: {
+    background: "#b9bce2",
+    padding: "20px 30px",
+    margin: "0px 10px",
+    maxWidth: 275,
+    display: "inline-block",
+  },
 });
 
 export const Navbar = () => {
