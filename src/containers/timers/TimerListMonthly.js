@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { fetchTimers } from "../../actions/Timers";
 
-export class TimerListWeekly extends Component {
+export class TimerListMonthly extends Component {
   componentDidMount() {
-    this.props.fetchTimers({ id: this.props.id, option: "/weekly" });
+    this.props.fetchTimers({ id: this.props.id, option: "/monthly" });
   }
   render() {
     if (this.props.loading) {
@@ -21,7 +21,7 @@ export class TimerListWeekly extends Component {
 
       return (
         <div>
-          <h3>This Week</h3>
+          <h3>This Month</h3>
 
           <NavLink to="/timers">Daily</NavLink>
           <NavLink to="/timers/weekly">Weekly</NavLink>
@@ -42,4 +42,4 @@ const mapStateFromProps = (state) => {
   };
 };
 
-export default connect(mapStateFromProps, { fetchTimers })(TimerListWeekly);
+export default connect(mapStateFromProps, { fetchTimers })(TimerListMonthly);

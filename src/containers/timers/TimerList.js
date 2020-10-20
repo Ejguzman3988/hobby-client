@@ -2,8 +2,12 @@ import React, { Component } from "react";
 import TimerCard from "../../components/timers/TimerCard";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { fetchTimers } from "../../actions/Timers";
 
 export class TimerList extends Component {
+  componentDidMount() {
+    this.props.fetchTimers({ id: this.props.id, option: "/daily" });
+  }
   render() {
     if (this.props.loading) {
       return <div>Loading...</div>;
@@ -17,7 +21,7 @@ export class TimerList extends Component {
 
       return (
         <div>
-          <h3>Heres a list of timers</h3>
+          <h3>Today</h3>
 
           <NavLink to="/timers">Daily</NavLink>
           <NavLink to="/timers/weekly">Weekly</NavLink>
@@ -34,8 +38,8 @@ const mapStateFromProps = (state) => {
   return {
     timers: state.timersReducer.timers,
     loading: state.timersReducer.loading,
-    option: state.timersReducer.option,
+    id: state.sessionsReducer.id,
   };
 };
 
-export default connect(mapStateFromProps)(TimerList);
+export default connect(mapStateFromProps, { fetchTimers })(TimerList);

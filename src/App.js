@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar";
 // Timers
 import TimerList from "./containers/timers/TimerList";
 import TimerListWeekly from "./containers/timers/TimerListWeekly";
+import TimerListMonthly from "./containers/timers/TimerListMonthly";
 import TimerForm from "./containers/timers/TimerForm";
 import TimerShow from "./containers/timers/TimerShow";
 
@@ -17,9 +18,6 @@ import SignIn from "./containers/sessions/SignIn";
 import Register from "./containers/sessions/Register";
 import Errors from "./containers/sessions/Errors";
 import LogOut from "./containers/sessions/LogOut";
-
-// Actions
-import { fetchTimers } from "./actions/Timers";
 
 export class App extends Component {
   render() {
@@ -36,7 +34,6 @@ export class App extends Component {
         </Router>
       );
     } else {
-      this.props.fetchTimers({ id: this.props.id, option: "/daily" });
       return (
         <Router>
           <h1>Hobby Tracker</h1>
@@ -47,7 +44,11 @@ export class App extends Component {
               <Route exact path="/timers" component={TimerList} />
               <Route exact path="/timers/weekly" component={TimerListWeekly} />
 
-              <Route exact path="/timers/monthly" component={TimerList} />
+              <Route
+                exact
+                path="/timers/monthly"
+                component={TimerListMonthly}
+              />
 
               <Route exact path="/timers/new" component={TimerForm} />
               <Route exact path="/timers/:id" component={TimerShow} />
@@ -70,4 +71,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchTimers })(App);
+export default connect(mapStateToProps)(App);

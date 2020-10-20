@@ -19,7 +19,7 @@ export const useStyles = makeStyles({
     background: "#20b2aa",
   },
   link: {
-    background: "#9966cc",
+    background: "#20b2aa",
     textDecoration: "none",
     color: "white",
     padding: "10px 30px",
@@ -31,6 +31,9 @@ export const useStyles = makeStyles({
     color: "white",
     padding: "10px 30px",
     borderRadius: 3,
+    zIndex: "modal",
+    border: "0",
+    borderRadius: "30%",
   },
 });
 
