@@ -33,7 +33,6 @@ export const useStyles = makeStyles({
     borderRadius: 3,
     zIndex: "modal",
     border: "0",
-    borderRadius: "30%",
   },
   card: {
     background: "#b9bce2",

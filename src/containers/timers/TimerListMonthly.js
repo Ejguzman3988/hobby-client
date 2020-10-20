@@ -1,38 +1,50 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import TimerCard from "../../components/timers/TimerCard";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { useStyles } from "../../components/NavBar";
 import { fetchTimers } from "../../actions/Timers";
+import Button from "@material-ui/core/Button";
 
-export class TimerListMonthly extends Component {
-  componentDidMount() {
-    this.props.fetchTimers({ id: this.props.id, option: "/monthly" });
+export const TimerList = (props) => {
+  useEffect(() => {
+    props.fetchTimers({ id: props.id, option: "/monthly" });
+  }, []);
+  const classes = useStyles();
+  if (props.loading) {
+    return <div>Loading...</div>;
+  } else {
+    const timers = props.timers
+      .sort()
+      .reverse()
+      .map((timer, i) => {
+        return <TimerCard key={i} timer={timer} />;
+      });
+
+    return (
+      <div>
+        <h3>Weekly</h3>
+        <Button color="inherit">
+          <NavLink to="/timers" className={classes.link}>
+            Daily
+          </NavLink>
+        </Button>
+        <Button>
+          <NavLink to="/timers/weekly" className={classes.link}>
+            Weekly
+          </NavLink>
+        </Button>
+        <Button>
+          <NavLink to="/timers/monthly" className={classes.link}>
+            Monthly{" "}
+          </NavLink>
+        </Button>
+
+        <ol>{timers}</ol>
+      </div>
+    );
   }
-  render() {
-    if (this.props.loading) {
-      return <div>Loading...</div>;
-    } else {
-      const timers = this.props.timers
-        .sort()
-        .reverse()
-        .map((timer, i) => {
-          return <TimerCard key={i} timer={timer} />;
-        });
-
-      return (
-        <div>
-          <h3>This Month</h3>
-
-          <NavLink to="/timers">Daily</NavLink>
-          <NavLink to="/timers/weekly">Weekly</NavLink>
-          <NavLink to="/timers/monthly">Monthly </NavLink>
-
-          <ol>{timers}</ol>
-        </div>
-      );
-    }
-  }
-}
+};
 
 const mapStateFromProps = (state) => {
   return {
@@ -42,4 +54,4 @@ const mapStateFromProps = (state) => {
   };
 };
 
-export default connect(mapStateFromProps, { fetchTimers })(TimerListMonthly);
+export default connect(mapStateFromProps, { fetchTimers })(TimerList);

@@ -4,7 +4,6 @@ import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import { fetchNewTimer, createdDone } from "../../actions/Timers";
 import Errors from "../sessions/Errors";
-import TimerList from "../../containers/timers/TimerList";
 
 const useStyles = makeStyles((theme) => ({
   root: {
