@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 import TimerUpdate from "./TimerUpdate";
+import DeleteTimer from "./DeleteTimer";
 // import { makeStyles } from "@material-ui/core/styles";
 
 const TimerCard = ({
@@ -52,6 +53,7 @@ const TimerCard = ({
         start_time={start_time}
         end_time={end_time}
       />
+      <DeleteTimer user_id={user_id} id={id} />
     </Card>
   );
 };

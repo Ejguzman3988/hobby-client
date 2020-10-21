@@ -65,6 +65,13 @@ export const useStyles = makeStyles({
   textField: {
     width: 200,
   },
+  delete: {
+    background: "Red",
+    textDecoration: "none",
+    color: "white",
+    padding: "10px 30px",
+    borderRadius: 10,
+  },
 });
 
 export const Navbar = () => {
@@ -78,7 +85,7 @@ export const Navbar = () => {
           </NavLink>
         </Button>
         <Button color="inherit">
-          <NavLink to="/timers" className={classes.root}>
+          <NavLink to="/timers/daily" className={classes.root}>
             Timers
           </NavLink>
         </Button>

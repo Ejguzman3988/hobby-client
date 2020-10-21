@@ -18,7 +18,7 @@ import SignIn from "./containers/sessions/SignIn";
 import Register from "./containers/sessions/Register";
 import Errors from "./containers/sessions/Errors";
 import LogOut from "./containers/sessions/LogOut";
-import FreeTime from "./containers/FreeTime";
+// import FreeTime from "./containers/FreeTime";
 
 // actions
 import { categories } from "./actions/Timers";
@@ -48,6 +48,7 @@ export class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/timers" component={TimerList} />
+              <Route exact path="/timers/daily" component={TimerList} />
               <Route exact path="/timers/weekly" component={TimerListWeekly} />
 
               <Route

@@ -6,6 +6,18 @@ import { useStyles } from "../../components/NavBar";
 import { fetchTimers } from "../../actions/Timers";
 import Button from "@material-ui/core/Button";
 
+const totalTime = (timers) => {
+  let total = 0;
+  timers.forEach((timer) => (total += timer.total_time));
+  const totMin = total / 60; // => 60 mins
+  const HR = Math.floor(totMin / 60);
+  const MIN = ((total / 60) % 60).toLocaleString("en-US", {
+    minimumIntegerDigits: 2,
+    useGrouping: false,
+  });
+  return `${HR}:${MIN}`;
+};
+
 export const TimerList = (props) => {
   useEffect(() => {
     props.fetchTimers({ id: props.id, option: "/weekly" });
@@ -18,12 +30,13 @@ export const TimerList = (props) => {
       .sort()
       .reverse()
       .map((timer, i) => {
-        return <TimerCard key={i} timer={timer} />;
+        return <TimerCard key={i} timer={timer} user_id={props.id} />;
       });
 
     return (
       <div>
         <h3>This Week: </h3>
+        <h4>TOTAL TIME : {totalTime(props.timers)}</h4>
         <Button color="inherit">
           <NavLink to="/timers" className={classes.link}>
             Daily
