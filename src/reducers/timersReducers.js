@@ -42,7 +42,7 @@ export default (state = initialState, action) => {
 
       return {
         ...state,
-        timers: first.concat(second, action.timer),
+        timers: first.concat(action.timer, second),
       };
     default:
       return state;

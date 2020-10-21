@@ -29,9 +29,12 @@ export const TimerList = (props) => {
   if (props.loading) {
     return <div>Loading...</div>;
   } else {
-    const timers = props.timers.map((timer, i) => {
-      return <TimerCard key={i} timer={timer} user_id={props.id} />;
-    });
+    const timers = props.timers
+      .sort()
+      .reverse()
+      .map((timer, i) => {
+        return <TimerCard key={i} timer={timer} user_id={props.id} />;
+      });
 
     return (
       <div>
