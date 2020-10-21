@@ -21,8 +21,8 @@ export default function Clock(props) {
   };
   clockDisplay();
   return (
-    <Typography component="div" variant="body1">
-      <Box component="span" m={1} className={classes.clock}>
+    <Typography align="center" component="div" variant="body1">
+      <Box component="span" className={classes.clock}>
         {clockDisplay()}
       </Box>
     </Typography>

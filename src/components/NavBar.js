@@ -38,12 +38,11 @@ export const useStyles = makeStyles({
   clock: {
     background: "black",
     textDecoration: "none",
-    color: "#32cd32",
-    padding: "10px 30px",
-    borderRadius: 3,
-    border: "0",
+    color: "white",
+    padding: "10px 20px",
+    borderRadius: 20,
     fontFamily: "sans-serif",
-    fontSize: 30,
+    fontSize: 60,
     font: "#32cd32",
   },
   card: {
@@ -58,6 +57,13 @@ export const useStyles = makeStyles({
     color: "#32cd32",
     fontFamily: '"Helvetica Neue"',
     fontSize: 18,
+  },
+  container: {
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  textField: {
+    width: 200,
   },
 });
 

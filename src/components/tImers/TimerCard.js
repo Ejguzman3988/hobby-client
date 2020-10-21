@@ -4,13 +4,14 @@ import { useStyles } from "../NavBar";
 import Clock from "./Clock";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
+import TimerUpdate from "./TimerUpdate";
 // import { makeStyles } from "@material-ui/core/styles";
 
 const TimerCard = ({
   timer: { id, name, category, start_time, end_time, total_time, date },
+  user_id,
 }) => {
   const themes = [
     "work",
@@ -35,17 +36,22 @@ const TimerCard = ({
           className={classes.media}
           image={`/images/${cate}.jpg`}
           title={`${cate}`}
-        />
-        <CardActions>
+        >
+          <Clock total_time={total_time} />
+        </CardMedia>
+        <CardContent>
           <NavLink className={classes.link} to={`/timers/${id}`}>
             {name} - {date}
           </NavLink>
-          <p>
-            Category: {category} {`/images/${cate}.jpg`}
-          </p>
-          <Clock total_time={total_time} />
-        </CardActions>
+          <p>Category: {category}</p>
+        </CardContent>
       </CardActionArea>
+      <TimerUpdate
+        user_id={user_id}
+        id={id}
+        start_time={start_time}
+        end_time={end_time}
+      />
     </Card>
   );
 };

@@ -44,7 +44,7 @@ export class App extends Component {
           <h1>Hobby Tracker</h1>
           <div className="App">
             <NavBar />
-            <FreeTime free_time={this.props.free_time} />
+            {/* <FreeTime free_time={this.props.free_time} /> */}
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/timers" component={TimerList} />

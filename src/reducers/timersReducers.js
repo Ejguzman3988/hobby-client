@@ -3,7 +3,7 @@ const initialState = {
   loading: true,
   timers: [],
   created: false,
-  categories: ["hello"],
+  categories: [],
 };
 
 export default (state = initialState, action) => {
@@ -32,6 +32,17 @@ export default (state = initialState, action) => {
       return {
         ...state,
         categories: state.categories.concat(action.categories),
+      };
+    case "UPDATE_TIMER":
+      const indexOfTimer = state.timers.findIndex(
+        (timer) => timer.id === action.timer.id
+      );
+      const first = state.timers.slice(0, indexOfTimer);
+      const second = state.timers.slice(indexOfTimer + 1, state.timers.length);
+
+      return {
+        ...state,
+        timers: first.concat(second, action.timer),
       };
     default:
       return state;

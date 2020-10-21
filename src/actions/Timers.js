@@ -4,6 +4,29 @@ export const browserHistory = createBrowserHistory();
 const LOADING = { type: "LOADING" };
 const BASE_URL = "http://localhost:3001";
 
+export const updateTimer = ({ user_id, id, start, end }) => {
+  return (dispatch) => {
+    fetch(BASE_URL + "/users/" + user_id + "/timers/" + id, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        start_time: start,
+        end_time: end,
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((data) =>
+        dispatch({
+          type: "UPDATE_TIMER",
+          timer: data,
+        })
+      );
+  };
+};
+
 export const categories = ({ id }) => {
   return (dispatch) => {
     fetch(BASE_URL + "/users/" + id + "/categories")
