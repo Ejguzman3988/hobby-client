@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useStyles } from "../../components/NavBar";
 import { fetchTimers } from "../../actions/Timers";
 import Button from "@material-ui/core/Button";
+import TimerPie from "./TimerPie";
 
 const totalTime = (timers) => {
   let total = 0;
@@ -37,6 +38,7 @@ export const TimerList = (props) => {
       <div>
         <h3>Weekly</h3>
         <h4>TOTAL TIME : {totalTime(props.timers)}</h4>
+        <TimerPie />
         <Button color="inherit">
           <NavLink to="/timers" className={classes.link}>
             Daily

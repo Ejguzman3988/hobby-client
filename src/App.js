@@ -24,6 +24,10 @@ import LogOut from "./containers/sessions/LogOut";
 import { categories } from "./actions/Timers";
 
 export class App extends Component {
+  componentDidMount() {
+    this.props.categories({ id: this.props.id });
+  }
+
   render() {
     if (!this.props.login) {
       return (
@@ -38,7 +42,6 @@ export class App extends Component {
         </Router>
       );
     } else {
-      this.props.categories({ id: this.props.id });
       return (
         <Router>
           <h1>Hobby Tracker</h1>

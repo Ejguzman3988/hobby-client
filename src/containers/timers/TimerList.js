@@ -40,7 +40,7 @@ export const TimerList = (props) => {
       <div>
         <h3>Today</h3>
         <h4>TOTAL TIME : {totalTime(props.timers)}</h4>
-        <TimerPie timers={props.timers} />
+        <TimerPie />
         <Button color="inherit">
           <NavLink to="/timers" className={classes.link}>
             Daily
