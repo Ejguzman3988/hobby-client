@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useStyles } from "../../components/NavBar";
 import { fetchTimers } from "../../actions/Timers";
 import Button from "@material-ui/core/Button";
+import TimerPie from "./TimerPie";
 
 const totalTime = (timers) => {
   let total = 0;
@@ -28,17 +29,15 @@ export const TimerList = (props) => {
   if (props.loading) {
     return <div>Loading...</div>;
   } else {
-    const timers = props.timers
-      .sort()
-      .reverse()
-      .map((timer, i) => {
-        return <TimerCard key={i} timer={timer} user_id={props.id} />;
-      });
+    const timers = props.timers.map((timer, i) => {
+      return <TimerCard key={i} timer={timer} user_id={props.id} />;
+    });
 
     return (
       <div>
         <h3>Today</h3>
         <h4>TOTAL TIME : {totalTime(props.timers)}</h4>
+        <TimerPie timers={props.timers} />
         <Button color="inherit">
           <NavLink to="/timers" className={classes.link}>
             Daily

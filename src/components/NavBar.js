@@ -72,6 +72,17 @@ export const useStyles = makeStyles({
     padding: "10px 30px",
     borderRadius: 10,
   },
+  box: {
+    maxWidth: 345,
+    minWidth: 345,
+    background: "cyan",
+    padding: "30px 25%",
+  },
+  pie: {
+    animation: true,
+    lengthAngle: 100,
+    background: "black",
+  },
 });
 
 export const Navbar = () => {

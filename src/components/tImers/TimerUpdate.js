@@ -27,7 +27,12 @@ const TimerUpdate = (props) => {
 
   const handleOnClick = (event) => {
     event.preventDefault();
-    props.updateTimer({ user_id: props.user_id, id: props.id, start, end });
+    if (end < start) {
+      debugger;
+      return alert("Please submit an end date greater than a start date.");
+    } else if (start !== null && end !== null) {
+      props.updateTimer({ user_id: props.user_id, id: props.id, start, end });
+    }
   };
 
   return (

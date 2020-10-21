@@ -1,10 +1,7 @@
-import { createBrowserHistory } from "history";
-
-export const browserHistory = createBrowserHistory();
 const LOADING = { type: "LOADING" };
 const BASE_URL = "http://localhost:3001";
 
-export const deleteTimer = ({ user_id, id, history }) => {
+export const deleteTimer = ({ user_id, id }) => {
   return (dispatch) => {
     fetch(BASE_URL + "/users/" + user_id + "/timers/" + id, {
       method: "DELETE",
