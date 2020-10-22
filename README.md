@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In order to set up the api with rails visit the [backend rails repository](https://github.com/Ejguzman3988/hobby-api).
 
-# Recipe Picker
+# Hobby Tracker
 
 Hobby Tracker is a single page application that helps you keep track of your hobbies. It allows you to view how much time you are spending on each hobby allowing you to organize the time you spend on activities.
 
@@ -45,7 +45,7 @@ This will open up the index html file and get your development environment start
 
 Sample video below:
 
-[YouTube Demo](https://www.youtube.com/watch?v=cfMpT2B4Ay8&feature=youtu.be)
+[YouTube Demo](https://www.youtube.com/watch?v=yBfIPyZwJFs)
 
 ## Contributing
 
