@@ -45,7 +45,7 @@ This will open up the index html file and get your development environment start
 
 Sample video below:
 
-[YouTube Demo](https://www.youtube.com/watch?v=yBfIPyZwJFs)
+[YouTube Demo](https://youtu.be/y4rqO9oB52o)
 
 ## Contributing
 
