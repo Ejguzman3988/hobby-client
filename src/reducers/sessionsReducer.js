@@ -2,9 +2,9 @@ const initialState = {
   // TODO: CHANGE ID,LOGIN,&FREETIME TO DEFAULT
 
   errors: [],
-  login: true,
+  login: false,
   email: "",
-  id: 1,
+  id: null,
   free_time: null,
 };
 
@@ -20,7 +20,6 @@ export default (state = initialState, action) => {
         id: null,
       };
     case "SUCCESS":
-      debugger;
       return {
         ...state,
         login: true,
