@@ -40,7 +40,7 @@ const TimerCard = ({
         >
           <Clock total_time={total_time} />
         </CardMedia>
-        <CardContent>
+        <CardContent style={{ background: "#cdefde" }}>
           <NavLink className={classes.link} to={`/timers/${id}`}>
             {name} - {date}
           </NavLink>

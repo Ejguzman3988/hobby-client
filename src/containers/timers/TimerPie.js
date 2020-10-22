@@ -2,8 +2,13 @@ import { PieChart } from "react-minimal-pie-chart";
 import React from "react";
 import { useStyles } from "../../components/NavBar";
 import Box from "@material-ui/core/Box";
-import { Data } from "../Data";
 import { connect } from "react-redux";
+import TimerLegend from "./TimerLegend";
+import { Button } from "@material-ui/core";
+import { NavLink } from "react-router-dom";
+import { Data } from "../Data";
+
+const categories = Data;
 
 const totalTime = (timers) => {
   let total = 0;
@@ -19,13 +24,20 @@ const totalTime = (timers) => {
 
 const TimerPie = (props) => {
   const classes = useStyles();
-  const titles = [];
-
+  let titles = [];
   return (
-    <Box className={classes.box}>
+    <Box
+      boxShadow={3}
+      bgcolor="background.paper"
+      m={0}
+      p={0}
+      style={{ width: "2rem", height: "10rem" }}
+      className={classes.box}
+    >
       <PieChart
         // center={[50, 50]}
-        data={returnTotals(props.timers, props.categories)}
+        className={classes.pie}
+        data={returnTotals(props.timers, categories)}
         labelPosition={0}
         lengthAngle={360}
         lineWidth={100}
@@ -34,11 +46,38 @@ const TimerPie = (props) => {
         startAngle={0}
         viewBoxSize={[100, 100]}
         label={({ dataEntry }) => {
-          titles.push(dataEntry.value);
-          return titles;
+          titles.push(dataEntry);
+          return true;
         }}
       />
-      {console.log(returnTotals(props.timers, props.categories))}
+      <TimerLegend dataEntries={titles} />
+
+      <Box
+        className={classes.nav}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          marginLeft: "0px",
+          paddingLeft: "40px",
+          paddingBottom: "200%",
+        }}
+      >
+        <Button>
+          <NavLink to="/timers" className={classes.link}>
+            Daily
+          </NavLink>
+        </Button>
+        <Button>
+          <NavLink to="/timers/weekly" className={classes.link}>
+            Weekly
+          </NavLink>
+        </Button>
+        <Button>
+          <NavLink to="/timers/monthly" className={classes.link}>
+            Monthly{" "}
+          </NavLink>
+        </Button>
+      </Box>
     </Box>
   );
 };
@@ -47,13 +86,13 @@ const separateTimers = (timers, categories) => {
   const sepTimers = [];
   let timerArray = [];
   for (let cat of categories) {
+    timerArray = [];
     for (let timer of timers) {
       if (timer.category === cat.category) {
         timerArray.push(timer);
       }
     }
     sepTimers.push(timerArray);
-    timerArray = [];
   }
   return sepTimers;
 };
@@ -75,7 +114,6 @@ const returnTotals = (timers, categories) => {
 const mapStateToProps = (state) => {
   return {
     timers: state.timersReducer.timers,
-    categories: state.timersReducer.categories,
   };
 };
 

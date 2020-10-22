@@ -5,7 +5,7 @@ const initialState = {
   login: true,
   email: "",
   id: 1,
-  free_time: "2",
+  free_time: null,
 };
 
 export default (state = initialState, action) => {

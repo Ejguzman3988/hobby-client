@@ -16,7 +16,11 @@ const DeleteTimer = (props) => {
   const classes = useStyles();
   return (
     <div>
-      <form className={classes.container} noValidate>
+      <form
+        style={{ background: "#efcdde" }}
+        className={classes.container}
+        noValidate
+      >
         <button className={classes.delete} onClick={handleOnClick}>
           Delete
         </button>

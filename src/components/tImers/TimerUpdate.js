@@ -37,7 +37,11 @@ const TimerUpdate = (props) => {
 
   return (
     <div>
-      <form className={classes.container} noValidate>
+      <form
+        className={classes.container}
+        style={{ background: "#efcdde" }}
+        noValidate
+      >
         <TextField
           id="datetime-local"
           name="start"
@@ -62,7 +66,12 @@ const TimerUpdate = (props) => {
           }}
           onChange={handleOnChange}
         />
-        <button onClick={handleOnClick}>Save</button>
+        <button
+          onClick={handleOnClick}
+          style={{ background: "#c44786", color: "whitesmoke" }}
+        >
+          Save
+        </button>
       </form>
     </div>
   );

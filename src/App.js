@@ -12,6 +12,7 @@ import TimerListWeekly from "./containers/timers/TimerListWeekly";
 import TimerListMonthly from "./containers/timers/TimerListMonthly";
 import TimerForm from "./containers/timers/TimerForm";
 import TimerShow from "./containers/timers/TimerShow";
+import TimerPie from "./containers/timers//TimerPie";
 
 // Session
 import SignIn from "./containers/sessions/SignIn";
@@ -24,10 +25,6 @@ import LogOut from "./containers/sessions/LogOut";
 import { categories } from "./actions/Timers";
 
 export class App extends Component {
-  componentDidMount() {
-    this.props.categories({ id: this.props.id });
-  }
-
   render() {
     if (!this.props.login) {
       return (
@@ -35,36 +32,54 @@ export class App extends Component {
           <Errors errors={this.props.errors} />
           <div className="App">
             <switch>
-              <Route exact path="/Register" exact component={Register} />
+              <Route exact path="/Register" component={Register} />
               <Route component={SignIn} />
             </switch>
           </div>
         </Router>
       );
     } else {
+      this.props.categories({ id: this.props.id });
       return (
         <Router>
           <h1>Hobby Tracker</h1>
           <div className="App">
             <NavBar />
-            {/* <FreeTime free_time={this.props.free_time} /> */}
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/timers" component={TimerList} />
-              <Route exact path="/timers/daily" component={TimerList} />
-              <Route exact path="/timers/weekly" component={TimerListWeekly} />
+            <div>
+              <TimerPie />
+              <div
+                style={{
+                  background: "#efdecd",
+                  position: "absolute",
+                  left: "333px",
+                  top: "64px",
+                  fontStyle: "italic",
+                  textAlign: "center",
+                }}
+              >
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/timers" component={TimerList} />
+                  <Route exact path="/timers/daily" component={TimerList} />
+                  <Route
+                    exact
+                    path="/timers/weekly"
+                    component={TimerListWeekly}
+                  />
 
-              <Route
-                exact
-                path="/timers/monthly"
-                component={TimerListMonthly}
-              />
+                  <Route
+                    exact
+                    path="/timers/monthly"
+                    component={TimerListMonthly}
+                  />
 
-              <Route exact path="/timers/new" component={TimerForm} />
-              <Route exact path="/timers/:id" component={TimerShow} />
-              <Route exact path="/logout" component={LogOut} />
-              <Route render={(props) => <div>There is no cow level</div>} />
-            </Switch>
+                  <Route exact path="/timers/new" component={TimerForm} />
+                  <Route exact path="/timers/:id" component={TimerShow} />
+                  <Route exact path="/logout" component={LogOut} />
+                  <Route render={(props) => <div>There is no cow level</div>} />
+                </Switch>
+              </div>
+            </div>
           </div>
         </Router>
       );

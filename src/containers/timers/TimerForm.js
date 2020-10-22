@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import { fetchNewTimer, createdDone } from "../../actions/Timers";
@@ -7,15 +6,9 @@ import Errors from "../sessions/Errors";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItemText from "@material-ui/core/ListItemText";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "25ch",
-    },
-  },
-}));
+import { Button } from "@material-ui/core";
+import { useStyles } from "../../components/NavBar";
+import ArrowDropDownCircleTwoToneIcon from "@material-ui/icons/ArrowDropDownCircleTwoTone";
 
 const TimerForm = (props) => {
   const classes = useStyles();
@@ -68,7 +61,7 @@ const TimerForm = (props) => {
   return (
     <div>
       <Errors errors={props.errors} />
-      <form className={classes.root} noValidate autoComplete="off">
+      <form noValidate autoComplete="off">
         <TextField
           name="name"
           id="standard-basic"
@@ -76,7 +69,7 @@ const TimerForm = (props) => {
           value={name}
           onChange={handleOnChange}
         />
-        <button
+        <Button
           name="category"
           id="category"
           label="Category"
@@ -86,13 +79,17 @@ const TimerForm = (props) => {
           aria-haspopup="true"
           onClick={handleClick}
           onChange={handleOnChange}
+          className={classes.link}
         >
           Pick a Category
-        </button>
+          <ArrowDropDownCircleTwoToneIcon />
+        </Button>
         <br />
-        <button onClick={handleOnClick}>Create Timer</button>
+        <Button className={classes.link} onClick={handleOnClick}>
+          Create Timer
+        </Button>
       </form>
-      <Menu id="menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)}>
+      <Menu id="menu" anrEl={anchorEl} keepMounted open={Boolean(anchorEl)}>
         {renderItems}
       </Menu>
     </div>
