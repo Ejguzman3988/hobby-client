@@ -10,6 +10,21 @@ import { Data } from "../Data";
 
 const categories = Data;
 
+const hashCode = (str) => {
+  // java String#hashCode
+  var hash = 0;
+  for (var i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return hash;
+};
+
+const intToRGB = (i) => {
+  var c = (i & 0x00ffffff).toString(16).toUpperCase();
+
+  return "00000".substring(0, 6 - c.length) + c;
+};
+
 const totalTime = (timers) => {
   let total = 0;
   timers.forEach((timer) => (total += timer.total_time));
@@ -22,6 +37,35 @@ const totalTime = (timers) => {
   return total / 60;
 };
 
+const separateTimers = (timers, categories) => {
+  const sepTimers = [];
+  let timerArray = [];
+  for (let cat of categories) {
+    timerArray = [];
+    for (let timer of timers) {
+      if (timer.category === cat.category) {
+        timerArray.push(timer);
+      }
+    }
+    sepTimers.push(timerArray);
+  }
+  return sepTimers;
+};
+
+const returnTotals = (timers, categories) => {
+  const arrayOfTimers = separateTimers(timers, categories);
+  const arrayOfTotals = [];
+  arrayOfTimers.forEach((array) =>
+    arrayOfTotals.push({
+      category: array[0] ? array[0].category : undefined,
+      title: array[0] ? array[0].category : undefined,
+      value: totalTime(array),
+      // color: "#" + Math.floor(Math.random() * 16777215).toString(16),
+      color: array[0] ? intToRGB(array[0].category) : undefined,
+    })
+  );
+  return arrayOfTotals;
+};
 const TimerPie = (props) => {
   const classes = useStyles();
   let titles = [];
@@ -80,35 +124,6 @@ const TimerPie = (props) => {
       </Box>
     </Box>
   );
-};
-
-const separateTimers = (timers, categories) => {
-  const sepTimers = [];
-  let timerArray = [];
-  for (let cat of categories) {
-    timerArray = [];
-    for (let timer of timers) {
-      if (timer.category === cat.category) {
-        timerArray.push(timer);
-      }
-    }
-    sepTimers.push(timerArray);
-  }
-  return sepTimers;
-};
-
-const returnTotals = (timers, categories) => {
-  const arrayOfTimers = separateTimers(timers, categories);
-  const arrayOfTotals = [];
-  arrayOfTimers.forEach((array) =>
-    arrayOfTotals.push({
-      category: array[0] ? array[0].category : undefined,
-      title: array[0] ? array[0].category : undefined,
-      value: totalTime(array),
-      color: "#" + Math.floor(Math.random() * 16777215).toString(16),
-    })
-  );
-  return arrayOfTotals;
 };
 
 const mapStateToProps = (state) => {
