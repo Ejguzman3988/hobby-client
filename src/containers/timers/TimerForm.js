@@ -74,7 +74,6 @@ const TimerForm = (props) => {
           id="category"
           label="Category"
           value="Pick a Category"
-          // onChange={handleOnChange}
           aria-controls="menu"
           aria-haspopup="true"
           onClick={handleClick}

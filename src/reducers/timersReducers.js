@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
     case "LOAD_CATEGORIES":
       return {
         ...state,
-        categories: state.categories.concat(action.categories),
+        categories: action.categories,
       };
     case "UPDATE_TIMER":
       const indexOfTimer = state.timers.findIndex(
