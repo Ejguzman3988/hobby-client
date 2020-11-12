@@ -2,9 +2,9 @@ const initialState = {
   // TODO: CHANGE ID,LOGIN,&FREETIME TO DEFAULT
 
   errors: [],
-  login: false,
+  login: true,
   email: "",
-  id: null,
+  id: 1,
   free_time: null,
 };
 

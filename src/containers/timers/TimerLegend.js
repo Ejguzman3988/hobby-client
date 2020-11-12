@@ -20,7 +20,6 @@ const TimerLegend = ({ dataEntries }) => {
       return <div></div>;
     } else {
       legends.push(legend.category);
-      debugger;
       return (
         <Box
           key={index}

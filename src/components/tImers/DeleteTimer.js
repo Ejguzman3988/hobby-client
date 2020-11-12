@@ -17,7 +17,7 @@ const DeleteTimer = (props) => {
   return (
     <div>
       <form
-        style={{ background: "#efcdde" }}
+        style={{ background: "transparent" }}
         className={classes.container}
         noValidate
       >

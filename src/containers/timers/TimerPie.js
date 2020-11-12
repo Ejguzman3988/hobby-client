@@ -10,16 +10,16 @@ import { Data } from "../Data";
 
 const categories = Data;
 
-const hashCode = (str) => {
+export const hashCode = (str) => {
   // java String#hashCode
   var hash = 0;
   for (var i = 0; i < str.length; i++) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash);
   }
-  return hash;
+  return hash * 444;
 };
 
-const intToRGB = (i) => {
+export const intToRGB = (i) => {
   var c = (i & 0x00ffffff).toString(16).toUpperCase();
 
   return "00000".substring(0, 6 - c.length) + c;
@@ -61,7 +61,8 @@ const returnTotals = (timers, categories) => {
       title: array[0] ? array[0].category : undefined,
       value: totalTime(array),
       // color: "#" + Math.floor(Math.random() * 16777215).toString(16),
-      color: array[0] ? intToRGB(array[0].category) : undefined,
+      color:
+        "#" + (array[0] ? intToRGB(hashCode(array[0].category)) : undefined),
     })
   );
   return arrayOfTotals;

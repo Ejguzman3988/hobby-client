@@ -7,7 +7,8 @@ import Button from "@material-ui/core/Button";
 
 export const useStyles = makeStyles({
   media: {
-    height: 140,
+    paddingLeft: "10px",
+    paddingBottom: "20px",
   },
   work: {
     background: "red",
@@ -42,19 +43,22 @@ export const useStyles = makeStyles({
   },
   // CREATE TIMER FORMATTING
   clock: {
-    background: "black",
+    background: "#f0f8ff",
     textDecoration: "none",
-    color: "white",
+    color: "black",
     padding: "10px 20px",
     borderRadius: 20,
     fontFamily: "sans-serif",
     fontSize: 60,
-    font: "#32cd32",
   },
   card: {
     maxWidth: 345,
     minWidth: 345,
+    maxHeight: 460,
+    minHeight: 460,
     display: "inline-block",
+    background: "transparent",
+    margin: "5px",
   },
   word: {
     display: "inline-block",
@@ -70,14 +74,18 @@ export const useStyles = makeStyles({
   },
   textField: {
     width: 200,
+    color: "secondary",
+    background: "#f0f8ff",
+    WebkitTextFillColor: "black",
   },
   delete: {
-    background: "#c44786",
+    background: "red",
     textDecoration: "none",
     color: "white",
     padding: "10px 30px",
     borderRadius: 10,
-    marginLeft: "50%",
+    margin: "4%",
+    marginLeft: "66%",
   },
   box: {
     maxWidth: 335,

@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import { useStyles } from "../NavBar";
 import { connect } from "react-redux";
 import { updateTimer } from "../../actions/Timers";
+import { hashCode, intToRGB } from "../../containers/timers/TimerPie";
 
 const formatTime = (time) => {
   let splitTime = time.split(":");
@@ -39,7 +40,10 @@ const TimerUpdate = (props) => {
     <div>
       <form
         className={classes.container}
-        style={{ background: "#efcdde" }}
+        style={{
+          // background: "#" + intToRGB(hashCode(props.category)),
+          background: "transparent",
+        }}
         noValidate
       >
         <TextField
@@ -51,6 +55,7 @@ const TimerUpdate = (props) => {
           className={classes.textField}
           InputLabelProps={{
             shrink: true,
+            color: "black",
           }}
           onChange={handleOnChange}
         />
@@ -66,9 +71,16 @@ const TimerUpdate = (props) => {
           }}
           onChange={handleOnChange}
         />
+
         <button
           onClick={handleOnClick}
-          style={{ background: "#c44786", color: "whitesmoke" }}
+          style={{
+            background: "#c44786",
+            color: "whitesmoke",
+            position: "absolute",
+            marginTop: "100px",
+            padding: "10px",
+          }}
         >
           Save
         </button>
