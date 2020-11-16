@@ -3,6 +3,7 @@ import TimerCard from "../../components/timers/TimerCard";
 import { connect } from "react-redux";
 import { fetchTimers } from "../../actions/Timers";
 import { useStyles } from "../../components/NavBar";
+import { Card } from "@material-ui/core";
 
 const totalTime = (timers) => {
   let total = 0;
@@ -35,8 +36,16 @@ export const TimerList = (props) => {
 
     return (
       <div>
-        <h3>Today</h3>
-        <h4>TOTAL TIME : {totalTime(props.timers)}</h4>
+        <Card className={classes.header}>
+          Daily Time:{" "}
+          <Card
+            style={{ display: "inline", marginLeft: "20px" }}
+            className={classes.clock}
+          >
+            {" "}
+            {totalTime(props.timers)}
+          </Card>{" "}
+        </Card>
 
         <ol>{timers}</ol>
       </div>

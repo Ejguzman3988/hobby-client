@@ -116,6 +116,14 @@ export const useStyles = makeStyles({
     background: "black",
     padding: "100%",
   },
+  header: {
+    background: "#c7006b",
+    fontFamily: "Impact, Charcoal, Arial",
+    fontSize: 45,
+    color: "white",
+    paddingTop: "30px",
+    paddingBottom: "30px",
+  },
 });
 
 export const Navbar = () => {

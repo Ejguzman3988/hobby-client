@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import TimerCard from "../../components/timers/TimerCard";
 import { connect } from "react-redux";
 import { fetchTimers } from "../../actions/Timers";
+import { useStyles } from "../../components/NavBar";
+import Card from "@material-ui/core/Card";
 
 const totalTime = (timers) => {
   let total = 0;
@@ -16,6 +18,7 @@ const totalTime = (timers) => {
 };
 
 export const TimerList = (props) => {
+  const classes = useStyles();
   useEffect(() => {
     props.fetchTimers({ id: props.id, option: "/weekly" });
   }, []);
@@ -31,8 +34,17 @@ export const TimerList = (props) => {
 
     return (
       <div>
-        <h3>This Week: </h3>
-        <h4>TOTAL TIME : {totalTime(props.timers)}</h4>
+        <Card className={classes.header}>
+          Weekly Time:{" "}
+          <Card
+            style={{ display: "inline", marginLeft: "20px" }}
+            className={classes.clock}
+          >
+            {" "}
+            {totalTime(props.timers)}
+          </Card>{" "}
+        </Card>
+
         <ol>{timers}</ol>
       </div>
     );
