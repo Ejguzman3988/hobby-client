@@ -124,6 +124,11 @@ export const useStyles = makeStyles({
     paddingTop: "30px",
     paddingBottom: "30px",
   },
+  form: {
+    background: "",
+    width: "100%",
+    height: "100%",
+  },
 });
 
 export const Navbar = () => {

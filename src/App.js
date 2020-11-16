@@ -58,6 +58,7 @@ export class App extends Component {
                   textAlign: "center",
                   width: "85%",
                   bottom: "0%",
+                  paddingBottom: "55%",
                 }}
               >
                 <Switch>

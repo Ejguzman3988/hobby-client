@@ -6,9 +6,10 @@ import Errors from "../sessions/Errors";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import { Button } from "@material-ui/core";
+import { Button, Card, CardMedia } from "@material-ui/core";
 import { useStyles } from "../../components/NavBar";
 import ArrowDropDownCircleTwoToneIcon from "@material-ui/icons/ArrowDropDownCircleTwoTone";
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 
 const TimerForm = (props) => {
   const classes = useStyles();
@@ -49,49 +50,114 @@ const TimerForm = (props) => {
   }
 
   const renderItems = props.categories.map((obj) => (
-    <MenuItem>
+    <MenuItem
+      style={{
+        background: "#c70039",
+        color: "white",
+        marginTop: "-10px",
+        marginBottom: "-10px",
+      }}
+    >
       <ListItemText
         key={obj.id}
         primary={obj.category}
         onClick={handleSelect}
+        style={{ background: "#c70039", color: "white" }}
       />
     </MenuItem>
   ));
 
   return (
-    <div>
+    <Card className={classes.form}>
       <Errors errors={props.errors} />
-      <form noValidate autoComplete="off">
-        <TextField
-          name="name"
-          id="standard-basic"
-          label="Name"
-          value={name}
-          onChange={handleOnChange}
-        />
-        <Button
-          name="category"
-          id="category"
-          label="Category"
-          value="Pick a Category"
-          aria-controls="menu"
-          aria-haspopup="true"
-          onClick={handleClick}
-          onChange={handleOnChange}
-          className={classes.link}
-        >
-          Pick a Category
-          <ArrowDropDownCircleTwoToneIcon />
-        </Button>
-        <br />
-        <Button className={classes.link} onClick={handleOnClick}>
+      <Card
+        className={classes.card}
+        style={{
+          backgroundColor: "beige",
+          position: "fixed",
+          left: "333px",
+          paddingTop: "10%",
+          paddingLeft: "5%",
+          paddingRight: "5%",
+          marginLeft: "2%",
+          marginTop: "5%",
+          border: "10px",
+          borderColor: "black",
+        }}
+      >
+        <h2 style={{ marginTop: "-100px", marginLeft: "-30px" }}>
           Create Timer
-        </Button>
-      </form>
-      <Menu id="menu" anrEl={anchorEl} keepMounted open={Boolean(anchorEl)}>
-        {renderItems}
-      </Menu>
-    </div>
+        </h2>
+        <form
+          noValidate
+          autoComplete="off"
+          style={{
+            position: "absolute",
+            textAlign: "left",
+          }}
+        >
+          <h3 style={{ display: "inline-block", marginRight: "30px" }}>
+            Name:{" "}
+          </h3>
+          <TextField
+            name="name"
+            id="standard-basic"
+            label="Name"
+            value={name}
+            onChange={handleOnChange}
+          />
+          <h3 style={{ marginRight: "30px" }}>
+            {"Category:"}
+            <Button
+              name="category"
+              id="category"
+              label="Category"
+              value="Pick a Category"
+              aria-controls="menu"
+              aria-haspopup="true"
+              onClick={handleClick}
+              onChange={handleOnChange}
+              className={classes.link}
+              style={{ marginLeft: "30px", background: "#c70039" }}
+            >
+              Pick a Category
+              <ArrowDropDownCircleTwoToneIcon />
+            </Button>
+          </h3>
+          <br />
+          <Button
+            className={classes.link}
+            onClick={handleOnClick}
+            style={{
+              marginTop: "45%",
+              width: "100%",
+            }}
+            endIcon={<CloudUploadIcon />}
+          >
+            Create Timer
+          </Button>
+        </form>
+        <Menu
+          id="menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+        >
+          {renderItems}
+        </Menu>
+      </Card>
+      <CardMedia
+        image={`/images/form-image.jpg`}
+        title={`form-image`}
+        style={{
+          width: "50%",
+          height: "100%",
+          marginLeft: "35%",
+          position: "fixed",
+          opacity: "80%",
+        }}
+      ></CardMedia>
+    </Card>
   );
 };
 const mapStateToProps = (state) => {
