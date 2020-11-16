@@ -23,6 +23,7 @@ import LogOut from "./containers/sessions/LogOut";
 
 // actions
 import { categories } from "./actions/Timers";
+import { Card } from "@material-ui/core";
 
 export class App extends Component {
   render() {
@@ -57,27 +58,31 @@ export class App extends Component {
                   textAlign: "center",
                 }}
               >
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route exact path="/timers" component={TimerList} />
-                  <Route exact path="/timers/daily" component={TimerList} />
-                  <Route
-                    exact
-                    path="/timers/weekly"
-                    component={TimerListWeekly}
-                  />
+                <Card style={{ background: "#efdecd" }}>
+                  <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/timers" component={TimerList} />
+                    <Route exact path="/timers/daily" component={TimerList} />
+                    <Route
+                      exact
+                      path="/timers/weekly"
+                      component={TimerListWeekly}
+                    />
 
-                  <Route
-                    exact
-                    path="/timers/monthly"
-                    component={TimerListMonthly}
-                  />
+                    <Route
+                      exact
+                      path="/timers/monthly"
+                      component={TimerListMonthly}
+                    />
 
-                  <Route exact path="/timers/new" component={TimerForm} />
-                  <Route exact path="/timers/:id" component={TimerShow} />
-                  <Route exact path="/logout" component={LogOut} />
-                  <Route render={(props) => <div>There is no cow level</div>} />
-                </Switch>
+                    <Route exact path="/timers/new" component={TimerForm} />
+                    <Route exact path="/timers/:id" component={TimerShow} />
+                    <Route exact path="/logout" component={LogOut} />
+                    <Route
+                      render={(props) => <div>There is no cow level</div>}
+                    />
+                  </Switch>
+                </Card>
               </div>
             </div>
           </div>

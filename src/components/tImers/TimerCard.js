@@ -110,7 +110,6 @@ const TimerCard = ({
           <DeleteTimer user_id={user_id} id={id} />
         </Card>
       </CardMedia>
-      <button onClick={handleOnClick}>{likes} LIKE</button>
     </Card>
   );
 };
