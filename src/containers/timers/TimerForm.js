@@ -52,25 +52,39 @@ const TimerForm = (props) => {
   const renderItems = props.categories.map((obj) => (
     <MenuItem
       style={{
-        background: "#c70039",
+        background: "#c7006b",
         color: "white",
         marginTop: "-10px",
         marginBottom: "-10px",
       }}
     >
-      <ListItemText
+      <CardMedia
         key={obj.id}
         primary={obj.category}
         onClick={handleSelect}
-        style={{ background: "#c70039", color: "white" }}
-      />
+        style={{
+          color: "white",
+          fontWeight: "bold",
+          textAlign: "center",
+          height: "60px",
+          width: "100%",
+          fontSize: "30px",
+          fontFamily: "'Nunito', sans-serif",
+          textShadow:
+            "0 0 10px black, 0 0 10px black, 0 0 10px black, 0 0 10px black",
+        }}
+        image={`/images/${obj.category}.jpg`}
+        title={`${obj.id}`}
+      >
+        {obj.category}
+      </CardMedia>
     </MenuItem>
   ));
 
   return (
     <Card className={classes.form}>
       <Errors errors={props.errors} />
-      <Card
+      <CardMedia
         className={classes.card}
         style={{
           backgroundColor: "beige",
@@ -79,8 +93,8 @@ const TimerForm = (props) => {
           paddingTop: "10%",
           paddingLeft: "5%",
           paddingRight: "5%",
-          marginLeft: "2%",
-          marginTop: "5%",
+          marginLeft: "3%",
+          marginTop: "2%",
           border: "10px",
           borderColor: "black",
         }}
@@ -145,7 +159,7 @@ const TimerForm = (props) => {
         >
           {renderItems}
         </Menu>
-      </Card>
+      </CardMedia>
       <CardMedia
         image={`/images/form-image.jpg`}
         title={`form-image`}
