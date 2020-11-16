@@ -9,6 +9,7 @@ export const useStyles = makeStyles({
   media: {
     paddingLeft: "10px",
     paddingBottom: "20px",
+    marginTop: "-20px",
   },
   work: {
     background: "red",
@@ -54,8 +55,8 @@ export const useStyles = makeStyles({
   card: {
     maxWidth: 345,
     minWidth: 345,
-    maxHeight: 460,
-    minHeight: 460,
+    maxHeight: 390,
+    minHeight: 390,
     display: "inline-block",
     background: "transparent",
     margin: "5px",
@@ -110,6 +111,10 @@ export const useStyles = makeStyles({
   legendColor: {
     background: "white",
     color: "BLACK",
+  },
+  back: {
+    background: "black",
+    padding: "100%",
   },
 });
 

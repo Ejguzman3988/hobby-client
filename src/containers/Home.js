@@ -10,7 +10,8 @@ const Home = () => {
           fontSize: 20,
           fontFamily: "serif",
           fontStyle: "oblique",
-          padding: "30px",
+          padding: "50px",
+          paddingRight: "100px",
         }}
       >
         Hobby Tracker is a single page application that helps you keep track of
@@ -24,7 +25,7 @@ const Home = () => {
         relaxation.'{" "}
       </p>
       <img
-        style={{ float: "right", padding: "10px" }}
+        style={{ float: "right", padding: "10px", marginTop: "-80px" }}
         src="https://media.giphy.com/media/4NvtQaVwUb4t0bYNY5/giphy.gif"
         height="285px"
         width="360px"
@@ -36,8 +37,7 @@ const Home = () => {
           fontSize: 20,
           fontFamily: "serif",
           fontStyle: "",
-
-          paddingLeft: "10px",
+          paddingLeft: "50px",
         }}
       >
         After a long hard day at work, who wouldn't want to just lean back, and
@@ -62,7 +62,7 @@ const Home = () => {
           textAlign: "justify",
           fontSize: 20,
           fontFamily: "serif",
-          paddingLeft: "10px",
+          paddingLeft: "50px",
         }}
       >
         Sounds familiar? Well this app aims to help give those words some
@@ -84,7 +84,7 @@ const Home = () => {
           fontSize: 20,
           fontFamily: "serif",
           fontStyle: "oblique",
-          paddingLeft: "10px",
+          paddingLeft: "50px",
         }}
       >
         Let's see how much time we are actually spending on the things we want

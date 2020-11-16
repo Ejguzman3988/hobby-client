@@ -56,33 +56,31 @@ export class App extends Component {
                   top: "64px",
                   fontStyle: "italic",
                   textAlign: "center",
+                  width: "85%",
+                  bottom: "0%",
                 }}
               >
-                <Card style={{ background: "#efdecd" }}>
-                  <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/timers" component={TimerList} />
-                    <Route exact path="/timers/daily" component={TimerList} />
-                    <Route
-                      exact
-                      path="/timers/weekly"
-                      component={TimerListWeekly}
-                    />
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/timers" component={TimerList} />
+                  <Route exact path="/timers/daily" component={TimerList} />
+                  <Route
+                    exact
+                    path="/timers/weekly"
+                    component={TimerListWeekly}
+                  />
 
-                    <Route
-                      exact
-                      path="/timers/monthly"
-                      component={TimerListMonthly}
-                    />
+                  <Route
+                    exact
+                    path="/timers/monthly"
+                    component={TimerListMonthly}
+                  />
 
-                    <Route exact path="/timers/new" component={TimerForm} />
-                    <Route exact path="/timers/:id" component={TimerShow} />
-                    <Route exact path="/logout" component={LogOut} />
-                    <Route
-                      render={(props) => <div>There is no cow level</div>}
-                    />
-                  </Switch>
-                </Card>
+                  <Route exact path="/timers/new" component={TimerForm} />
+                  <Route exact path="/timers/:id" component={TimerShow} />
+                  <Route exact path="/logout" component={LogOut} />
+                  <Route render={(props) => <div>There is no cow level</div>} />
+                </Switch>
               </div>
             </div>
           </div>

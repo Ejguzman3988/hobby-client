@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import TimerCard from "../../components/timers/TimerCard";
 import { connect } from "react-redux";
 import { fetchTimers } from "../../actions/Timers";
+import { useStyles } from "../../components/NavBar";
 
 const totalTime = (timers) => {
   let total = 0;
@@ -18,6 +19,7 @@ const totalTime = (timers) => {
 // return result
 
 export const TimerList = (props) => {
+  const classes = useStyles();
   useEffect(() => {
     props.fetchTimers({ id: props.id, option: "/daily" });
   }, []);

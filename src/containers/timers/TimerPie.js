@@ -76,7 +76,7 @@ const TimerPie = (props) => {
       bgcolor="background.paper"
       m={0}
       p={0}
-      style={{ width: "2rem", height: "10rem" }}
+      style={{ width: "2rem", height: "20rem" }}
       className={classes.box}
     >
       <PieChart
